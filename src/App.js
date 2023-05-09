@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import  React, {useState, useEffect} from "react"
+//importing components
+import ToDoList from './components/ToDoList'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
 
-function App() {
+const App = () => {
+  const [showSidebar, setShowSidebar] = useState();
+  const [projectList, setProjectList] = useState();
+
+  useEffect(() => {
+   setShowSidebar(false)
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setShowSidebar={setShowSidebar} />
+      {showSidebar && <Sidebar projectList={projectList}/>}
+      <ToDoList/>
     </div>
   );
 }
