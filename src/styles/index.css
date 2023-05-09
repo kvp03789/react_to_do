@@ -23,6 +23,11 @@ header{
   align-items: center;
 }
 
+input{
+  height: 40px;
+  font-size: 1.2rem;
+}
+
 .hamburer-icon{
   width: 50px;
   height: 50px;
@@ -39,6 +44,7 @@ header{
 
 nav{
   border-right: 1px solid black;
+  width: 25%;
 }
 
 .nav-section{
@@ -66,6 +72,48 @@ nav{
   height:50px;
 }
 
+.add-project-button{
+  width: inherit;
+  display: flex;
+}
+
+.add-project-button:hover{
+  cursor: pointer;
+  background-color: grey;
+}
+
+.form-section{
+  display: flex;
+  align-items: center;
+}
+
+button{
+  border: none;
+  height: 50px;
+  width: 80px;
+  font-size: 1.2rem;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.cancel{
+  background-color: red;
+  color: white
+}
+
+.add{
+  background-color: rgb(24, 223, 24);
+  color: white
+}
+
+.new-project-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

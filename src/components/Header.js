@@ -8,15 +8,15 @@ import ListoLogo from '../img/listo_logo.png'
 const Header = (props) => {
 
     const handleShowSidebar = () => {
-        props.setShowSidebar(prev => {
-            if(prev === false){
-                props.setShowSidebar(true)
-                // console.log("show")
-            }else {
-                props.setShowSidebar(false)
-                // console.log("hide")
-            }
-        });
+        props.setShowSidebar(prev => !prev
+            // if(prev === false){
+            //     props.setShowSidebar(true)
+            //     // console.log("show")
+            // }else {
+            //     props.setShowSidebar(false)
+            //     // console.log("hide")
+            // }
+        );
     }
 
     return(
