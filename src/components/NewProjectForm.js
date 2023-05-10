@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import ProjectIcon from '../img/project-menu.svg' 
+import { ProjectContext } from '../App'
 
 const NewProjectForm = ({setShowAddProjectForm, setProjectList}) => {
+    const [counter, setCounter] = useState(0)
 
+    
+
+    const projectListArray = useContext(ProjectContext)
     const handleCancelButton = () => {
         setShowAddProjectForm()
     }
@@ -11,9 +16,10 @@ const NewProjectForm = ({setShowAddProjectForm, setProjectList}) => {
         const input = document.querySelector(".new-project-form-input")
         const newProject = {
             name: input.value,
-            key: input.value
+            taskList: []
         }
-        setProjectList(prev => [...prev, newProject])
+        setCounter(prev => prev++)
+        setProjectList([...projectListArray, newProject])
         setShowAddProjectForm()
     }
 
