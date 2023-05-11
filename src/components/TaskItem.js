@@ -4,9 +4,12 @@ import StarOutline from '../img/star-outline.svg'
 import StarFill from '../img/star-fill.svg'
 import Dots from '../img/dots.svg'
 import EditTaskMenu from './EditTaskMenu'
+import EditTaskForm from './EditTaskForm'
 
 const TaskItem = (props) => {
     const [showEditTaskMenu,  setShowEditTaskMenu] = useState(false)
+    const [showEditTaskForm, setShowEditTaskForm] = useState(false)
+
     const handleCompleteClick = (e) => {
         if(e.target.classList.contains("green"))e.target.classList.remove("green")
         else e.target.classList.add("green")
@@ -31,15 +34,22 @@ const TaskItem = (props) => {
     }
 
     return ( 
-        <div className="task-item" key={props.key}>
-            <div className="task-complete-button" onClick={(e) => {handleCompleteClick(e)}}></div>
-            <h3>{props.task.name}</h3>
-            <p>{props.task.details}</p>
-            <p>{props.task.date}</p>
-            <img src={props.task.important ? StarFill : StarOutline} className="svg-img" onClick={(e) => handleImportant(e)}/>
-            <img src={Dots} className="svg-img" onClick={() => setShowEditTaskMenu(prev => !prev)}/>
+        <div className="task-item-container" key={props.key}>
+            <div className="task-item" >
+                <div className="task-complete-button" onClick={(e) => {handleCompleteClick(e)}}></div>
+                <h3>{props.task.name}</h3>
+                <p>{props.task.details}</p>
+                <p>{props.task.date}</p>
+                <img src={props.task.important ? StarFill : StarOutline} className="svg-img" onClick={(e) => handleImportant(e)}/>
+                <div className="dots">
+                    <img src={Dots} className="svg-img dots" onClick={() => setShowEditTaskMenu(prev => !prev)}/>
+                </div>
+                {
+                    showEditTaskMenu && <EditTaskMenu task={props.task} setProjectList={props.setProjectList} project={props.project} projectList={props.projectList} setShowEditTaskForm={setShowEditTaskForm} setShowEditTaskMenu={setShowEditTaskMenu}/>
+                }
+            </div>
             {
-                showEditTaskMenu && <EditTaskMenu/>
+                showEditTaskForm && <EditTaskForm setShowEditTaskForm={setShowEditTaskForm} project={props.project} projectList={props.projectList} setProjectList={props.setProjectList} task={props.task}/>
             }
         </div>
      );
